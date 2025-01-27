@@ -110,11 +110,12 @@ class BarWindow:
 class ResponseWindow:
     def __init__(self, root, path):
         self.root = root
+        self.root.geometry("+15+15")
         self.split = 0 # the resulting split given by user
 
         # display the image to the user
-        img= Image.open(path)
-        s = img.resize((1000, 750), Image.LANCZOS)
+        self.original= Image.open(path)
+        s = self.original.resize(self.setInitialDim(), Image.LANCZOS)
         image = ImageTk.PhotoImage(s)
         panel = Label(root, image = image)
         panel.image = image
@@ -134,6 +135,34 @@ class ResponseWindow:
 
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
+    def setInitialDim(self):
+        maxwidth = 1000    
+        maxheight = 750
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        aspect_ratio = self.original.width / self.original.height
+
+        # Adjust max dimensions to account for the Dock height (100px assumed for macOS)
+        max_height = min(maxheight, screen_height - 200)  # Reduce height by Dock area
+        max_width = min(maxwidth, screen_width)  # Ensure it doesn't exceed screen width
+
+        if self.original.width > max_width or self.original.height > max_height:
+            if self.original.width / max_width > self.original.height / max_height:
+                # Width is the limiting factor
+                return max_width, int(max_width / aspect_ratio)
+            else:
+                # Height is the limiting factor
+                return int(max_height * aspect_ratio), max_height
+        else:
+            # If the image is smaller than the maximum allowed size, scale it up to the max size
+            if self.original.width < max_width and self.original.height < max_height:
+                if aspect_ratio > max_width / max_height:
+                    return max_width, int(max_width / aspect_ratio)
+                else:
+                    return int(max_height * aspect_ratio), max_height
+            else:
+                # Use the original size if it fits within the maximum dimensions
+                return self.original.width, self.original.height
     
     # collects the response choice of the user and closes window
     def choose(self, split):
@@ -182,7 +211,7 @@ class CollectionWindow:
         self.displayedPnts = []
 
         # Initialize Canvas
-        self.canvas = Canvas(root, background='white')
+        self.canvas = Canvas(root, background='dark blue')
         self.canvas.pack(fill='both', expand=True)  # Ensure canvas resizes correctly
         self.curr_im = self.getImagePortion()
 
@@ -224,7 +253,7 @@ class CollectionWindow:
         screen_height = self.root.winfo_screenheight()
 
         # Adjust max dimensions to account for the Dock height (100px assumed for macOS)
-        max_height = min(maxheight, screen_height - 100)  # Reduce height by Dock area
+        max_height = min(maxheight, screen_height - 200)  # Reduce height by Dock area
         max_width = min(maxwidth, screen_width)  # Ensure it doesn't exceed screen width
 
         div = int(sqrt(len(self.ranges)))
