@@ -1,7 +1,9 @@
-# Purpose
+# Manual Point Count
+
+## Description
 This tool is designed to calculate grain size estimates based off an image of grains.
 
-# Instructions
+## Instructions
 1. Open the PointCountPy folder
 2. Create a folder of images to obtain grain size data for
 3. Run DigitalPebbleCountTool
@@ -19,7 +21,7 @@ This tool is designed to calculate grain size estimates based off an image of gr
         - Pressing delete will undo and pressing enter will submit the subimage
 8. After everything is done, the output excel file should be filled in
 
-# Next steps / Improvements
+## Next steps / Improvements
 - Handling Errors 
 - 5) Collect metadata about date image was taken to put into the excel file
 - 7a) have the ability to draw outside image boundries (in case rock is on edge)
@@ -34,5 +36,5 @@ This tool is designed to calculate grain size estimates based off an image of gr
      - grain size paired with grain location
      (grain size 1, grain location 1, grain size 2, grain location 2, ...)
 
-# Cite
+### Cite
 This codebase is built off Ian Miller's Manual MATLAB Point Count Code and adapted into Python
