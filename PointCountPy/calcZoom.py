@@ -43,12 +43,3 @@ class calcZoom(CanvasImage):
             return hyp / scale
         else: 
             return None
-
-
-# path = 'C:/Users/samue/OneDrive/Research/PointCount_Python/Photo_Data/132_2014_05_17_050.JPG'  # place path to your image here
-# root = tk.Tk()
-# root.geometry("1000x750")
-# app = calcZoom(root, path)
-# app.canvas.config(width=1000, height=750)
-# app.grid(row=0, column=0)  # show widget
-# root.mainloop()

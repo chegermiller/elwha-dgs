@@ -18,7 +18,7 @@ if not file_names:
     sys.exit(1)
 
 # Get output file
-output = filedialog.asksaveasfile(initialfile = 'Untitled.xlsx', defaultextension=".xlsx", initialdir=os.path.dirname(os.path.abspath(__file__)), 
+output = filedialog.asksaveasfile(initialfile = 'Untitled.xlsx', defaultextension=".xlsx", initialdir=os.path.dirname(os.path.abspath(__file__)) + '\\Data_Collection', 
                                   filetypes=[("Excel Documents","*.xlsx")])
 
 if not output:

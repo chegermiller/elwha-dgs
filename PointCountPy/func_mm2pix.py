@@ -5,7 +5,6 @@ import sys
 def mm2pix(image_path):
     root = tk.Tk()
     root.title('Draw a Line along the Scale Bar')
-    root.geometry('1000x750+0+0')
     window = BarWindow(root, image_path)
     root.mainloop()
     ratio = window.getConversion()

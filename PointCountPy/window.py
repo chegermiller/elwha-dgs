@@ -204,7 +204,7 @@ class CollectionWindow:
         label.pack(side='left', padx=15)
 
         toolbar_height = frame.winfo_height()
-        self.root.geometry(f"{self.width + 2*padx}x{self.height + 2* pady + toolbar_height}+100+0")
+        self.root.geometry(f"{self.width + 2 * padx}x{self.height + 2 * pady + toolbar_height+ 20}+100+0")
 
         # create random points
         self.randomPoints = self.createRandomPoints(n)       # create all the locations of the random points
@@ -253,8 +253,8 @@ class CollectionWindow:
         screen_height = self.root.winfo_screenheight()
 
         # Adjust max dimensions to account for the Dock height (100px assumed for macOS)
-        max_height = min(maxheight, screen_height - 200)  # Reduce height by Dock area
-        max_width = min(maxwidth, screen_width)  # Ensure it doesn't exceed screen width
+        max_height = min(maxheight, screen_height - 2 * self.pady - 100)  # Reduce height by Dock area
+        max_width = min(maxwidth, screen_width - 2 * self.padx)  # Ensure it doesn't exceed screen width
 
         div = int(sqrt(len(self.ranges)))
         orig = np.array(self.orig_image.size) / div

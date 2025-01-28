@@ -1,9 +1,6 @@
-# Ignore message.txt - file to keep track of any updates we want
-message.txt
 # Ignore all .xlsx file used for testing 
 *.xlsx
 Photo_Data/
-Data_Collection/
 .vscode/
 
 # Byte-compiled / optimized / DLL files

@@ -20,7 +20,6 @@ This tool is meant to help people get a grain estimate based off a photo of grai
 8. After everything is done, the output excel file should be filled in
 
 # Next steps / Improvements
-- Resized window is hard coded. 1000x750. Could scale it depending on computer
 - Handling Errors 
 - 5) Collect metadata about date image was taken to put into the excel file
 - 7a) have the ability to draw outside image boundries (in case rock is on edge)
@@ -29,7 +28,7 @@ This tool is meant to help people get a grain estimate based off a photo of grai
 - 7a) when image is zoomed in/out points remain relative to the image (will be large when zoomed in)
             - preferred the points remain the same size no matter what the zoom
 - 7c) Have points show up one at a time. (Or any other ideas so points to be labelled can be located easily)
-~ 8) unsure if data should be formatted in which way:
+- 8) unsure if data should be formatted in which way:
      - all grain sizes and then all point locations 
      ("grain size 1", grain size 2, ... , grain location 1, grain location 2, ...)
      - grain size paired with grain location
