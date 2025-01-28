@@ -1,7 +1,7 @@
 # Manual Point Count
 
 ## Description
-This tool is designed to calculate grain size estimates based off an image of grains.
+This tool is designed to calculate grain size estimates based off an image of grains. This program returns a `.xlsx` containing the locations and sizes of each labeled grain in the image.
 
 ## Instructions
 1. Open the PointCountPy folder
@@ -19,7 +19,7 @@ This tool is designed to calculate grain size estimates based off an image of gr
     c. For each subimage draw a line for each of the points in the photo. 
         - The current grain to label will be colored yellow
         - Pressing delete will undo and pressing enter will submit the subimage
-8. After everything is done, the output excel file should be filled in
+8. Once the program finished, a `.xlsx` file is created containing the location and sizes of each labeled grain
 
 ## Next steps / Improvements
 - Handling Errors 
