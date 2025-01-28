@@ -11,5 +11,5 @@ As of now, the repository includes our Python Point Count program, which calcula
 ### Point Count Python
 This project adapts a MATLAB-based codebase to Python in order to calculate grain size estimates from image data. The Python program analyzes labeled points in a provided image, returning a `.xlsx` file with grain location and size data.
 
-### Contributions
+## Contributions
 This repository is developed through the efforts of Christie Hegermiller, Ian Miller, Daniel Buscombe, Jonathan Warrick, Cal Schurman, and Samuel Alampay
