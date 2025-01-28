@@ -2,7 +2,7 @@
 This tool is designed to calculate grain size estimates based off an image of grains.
 
 # Instructions
-1. Open the PointCount_Python folder
+1. Open the PointCountPy folder
 2. Create a folder of images to obtain grain size data for
 3. Run DigitalPebbleCountTool
 4. In the pop-up, answer how many points you would like to label for each image
