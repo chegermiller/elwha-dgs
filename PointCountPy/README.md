@@ -35,4 +35,4 @@ This tool is designed to calculate grain size estimates based off an image of gr
      (grain size 1, grain location 1, grain size 2, grain location 2, ...)
 
 # Cite
-This codebase is built off Ian Miller's Manual Point Count Code and adapted into Python
+This codebase is built off Ian Miller's Manual MATLAB Point Count Code and adapted into Python
