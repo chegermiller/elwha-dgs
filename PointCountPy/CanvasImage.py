@@ -228,26 +228,30 @@ class CanvasImage:
         y = self.canvas.canvasy(event.y)
         if self.outside(x, y): return  # zoom only inside image area
         scale = 1.0
-        # Respond to Linux (event.num) or Windows (event.delta) wheel event
-        if event.num == 5 or event.delta == -120:  # scroll down, smaller
+        # For Windows and MacOS, both event.delta and event.num are used to detect zoom direction
+        if event.delta < 0 or event.num == 5:  # Scroll down, smaller
             if round(self.__min_side * self.imscale) < 30: return  # image is less than 30 pixels
             self.imscale /= self.__delta
-            scale        /= self.__delta
-        if event.num == 4 or event.delta == 120:  # scroll up, bigger
+            scale /= self.__delta
+        elif event.delta > 0 or event.num == 4:  # Scroll up, bigger
             i = min(self.canvas.winfo_width(), self.canvas.winfo_height()) >> 1
             if i < self.imscale: return  # 1 pixel is bigger than the visible area
             self.imscale *= self.__delta
-            scale        *= self.__delta
-        # Take appropriate image from the pyramid
+            scale *= self.__delta
+        
+        # Update the image pyramid
         k = self.imscale * self.__ratio  # temporary coefficient
         self.__curr_img = min((-1) * int(math.log(k, self.__reduction)), len(self.__pyramid) - 1)
         self.__scale = k * math.pow(self.__reduction, max(0, self.__curr_img))
-        #
-        self.canvas.scale('all', x, y, scale, scale)  # rescale all objects
-        # Redraw some figures before showing image on the screen
-        self.redraw_figures()  # method for child classes
-        self.__show_image()
 
+        # Rescale canvas objects
+        self.canvas.scale('all', x, y, scale, scale)
+        
+        # Redraw figures if necessary
+        self.redraw_figures()  # method for child classes
+        self.__show_image()  # Show the zoomed image
+
+    
     def __keystroke(self, event):
         """ Scrolling with the keyboard.
             Independent from the language of the keyboard, CapsLock, <Ctrl>+<key>, etc. """
@@ -299,13 +303,3 @@ class MainWindow(ttk.Frame):
         self.master.columnconfigure(0, weight=1)
         canvas = CanvasImage(self.master, path)  # create widget
         canvas.grid(row=0, column=0)  # show widget
-
-# filename = 'C:/Users/samue/OneDrive/Research/PointCount_Python/Photo_Data/132_2014_05_17_050.JPG'  # place path to your image here
-# #filename = 'd:/Data/yandex_z18_1-1.tif'  # huge TIFF file 1.4 GB
-# #filename = 'd:/Data/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.jpg'
-# #filename = 'd:/Data/The_Garden_of_Earthly_Delights_by_Bosch_High_Resolution.tif'
-# #filename = 'd:/Data/heic1502a.tif'
-# #filename = 'd:/Data/land_shallow_topo_east.tif'
-# #filename = 'd:/Data/X1D5_B0002594.3FR'
-# app = MainWindow(tk.Tk(), path=filename)
-# app.mainloop()
