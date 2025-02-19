@@ -4,6 +4,11 @@
 This tool is designed to calculate grain size estimates based off an image of grains. This program returns a `.xlsx` containing the locations and sizes of each labeled grain in the image.
 
 ## Instructions
+
+### Create Conda Environment
+`conda env create -f pointcount.yml`
+
+### Use Point Count 
 1. Open the PointCountPy folder
 2. Create a folder of images to obtain grain size data for
 3. Run DigitalPebbleCountTool
