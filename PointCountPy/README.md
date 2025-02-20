@@ -1,30 +1,44 @@
 # Manual Point Count
 
 ## Description
-This tool is designed to calculate grain size estimates based off an image of grains. This program returns a `.xlsx` containing the locations and sizes of each labeled grain in the image.
+This tool is designed to calculate grain size estimates given an image of grains. This program returns a `.xlsx` containing the locations and sizes of each labeled grain in the image as well as the average grain size.
 
 ## Instructions
 
-### Create Conda Environment
+### Initial Setup
+
+#### Conda
+It is recommended to use a conda environment to run this program. Use the code below to create a conda environment for this program called, `pointcount`
+
 `conda env create -f pointcount.yml`
 
-### Use Point Count 
+To activate the conda environment:
+`conda activate pointcount`
+
+#### Images
+
+Create a folder containing images to gather point count data for
+
+***Follow the instructions below to run the tool.***
+
+### Point Count Tool - Initialization
 1. Open the PointCountPy folder
-2. Create a folder of images to obtain grain size data for
-3. Run DigitalPebbleCountTool
-4. In the pop-up, answer how many points you would like to label for each image
-5. Select all images you would like to analyze from the file dialog
-6. Next it will prompt you to name an excel file for output
-7. Instructions for each image:
-    a. Click the two ends of the scale bar to draw a line and type in the length 
-       of the scale bar in mm at the bottom. Click Submit when done.
-            - zoom in/out with scroll wheel
-            - drawing a new line will override the old drawn line
-    b. Click the sizing you would prefer for the image
-    c. For each subimage draw a line for each of the points in the photo. 
-        - The current grain to label will be colored yellow
-        - Pressing delete will undo and pressing enter will submit the subimage
-8. Once the program finished, a `.xlsx` file is created containing the location and sizes of each labeled grain
+3. Run DigitalPebbleCountTool: `python DigitalPebbleCountTool.py`
+4. In the pop-up, select the folder containing images for grain size analysis
+5. In the next window, select where you would like to save your `.xlsx` file
+6. In the next window, specify how many points you would like to label for each image
+
+### Point Count Tool - Data Gathering
+1. Click the two ends of the scale bar to draw a line and type in the length of the scale bar in mm at the bottom. Click Submit when done.
+    - zoom in/out with scroll wheel
+    - scroll using mouse
+    - drawing a new line will override the old drawn line
+2. Click how many frames you would like to split the image into for point collection
+    - Suggested 1 for cobble, 4 for mixed, 16 for smaller grains 
+3. For each subimage draw a line for each of the points in the photo. 
+    - The current grain to label will be colored yellow
+    - Pressing delete will undo and pressing enter will submit the subimage
+9. Once the program finished, a `.xlsx` file is created containing the location and sizes of each labeled grain
 
 ## Next steps / Improvements
 - Handling Errors 
